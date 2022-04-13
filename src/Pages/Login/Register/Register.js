@@ -5,8 +5,13 @@ import './Register.css'
 const Register = () => {
     const navigate = useNavigate();
 
-    const handleSubmit = e => {
-        e.preventDefault();
+    const handleSubmit = event => {
+        event.preventDefault();
+        const name = event.target.name.value;
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+
+        console.log(email, name, password);
     }
     return (
         <div className='register-from'>
