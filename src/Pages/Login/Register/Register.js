@@ -13,6 +13,9 @@ const Register = () => {
         loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth);
+    if (user) {
+        navigate('/home');
+    }
     const handleSubmit = event => {
         event.preventDefault();
         const name = event.target.name.value;
