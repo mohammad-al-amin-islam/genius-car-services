@@ -15,10 +15,11 @@ const SocialLogin = () => {
     const handleGoogleSignIn = () => {
         signInWithGoogle();
     }
-    let getError;
     if (user || userGit) {
         navigate('/home');
     }
+    let getError;
+
     if (error || errorGit) {
         getError = <p>{error?.message} {errorGit?.message}</p>
     }
