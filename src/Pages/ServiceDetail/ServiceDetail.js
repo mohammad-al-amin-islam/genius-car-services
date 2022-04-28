@@ -1,20 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import useServiceDetail from '../../hooks/useServiceDetail';
 
 const ServiceDetail = () => {
     const { serviceId } = useParams();
+    const [service] = useServiceDetail(serviceId);
     const navigate = useNavigate();
-    const [service, setService] = useState({});
-    useEffect(() => {
-        const url = `http://localhost:5000/service/${serviceId}`
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setService(data))
-    }, [serviceId]);
+
     return (
-        <div>
+        <div className="w-50 mx-auto">
             <h1>Service details of: {service.name}</h1>
-            <button onClick={() => navigate('/checkout')}>CheckOut</button>
+            <button onClick={() => navigate(`/checkout/${serviceId}`)}>CheckOut</button>
         </div>
     );
 };
