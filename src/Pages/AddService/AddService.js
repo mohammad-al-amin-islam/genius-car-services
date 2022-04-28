@@ -1,11 +1,13 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import { useNavigate } from 'react-router-dom';
 
 const AddService = () => {
+    const navigate = useNavigate()
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
         console.log(data);
-        fetch('http://localhost:5000/serviceadd', {
+        fetch('https://infinite-bayou-64300.herokuapp.com/serviceadd', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -15,6 +17,7 @@ const AddService = () => {
             .then(res => res.json())
             .then(result => {
                 console.log(result);
+                navigate('/home');
             })
     }
     return (

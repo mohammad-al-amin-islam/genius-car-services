@@ -12,7 +12,7 @@ const Order = () => {
     const navigate = useNavigate();
     useEffect(() => {
         const getOrder = async () => {
-            const url = `http://localhost:5000/order?email=${email}`
+            const url = `https://infinite-bayou-64300.herokuapp.com/order?email=${email}`
             try {
                 const { data } = await axiosPrivate.get(url)
                 //  {
@@ -33,8 +33,13 @@ const Order = () => {
         getOrder();
     }, [email]);
     return (
-        <div>
+        <div className='w-50 mx-auto'>
             <h4>Total Order : {orders.length}</h4>
+            {
+                orders.map(order => <div key={order._id}>
+                    {order.email}:{order.service}
+                </div>)
+            }
         </div>
     );
 };

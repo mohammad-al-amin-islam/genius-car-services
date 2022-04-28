@@ -6,7 +6,7 @@ const ManageService = () => {
     const handleDelete = id => {
         const procced = window.confirm();
         if (procced) {
-            const url = `http://localhost:5000/manageservice/${id}`
+            const url = `https://infinite-bayou-64300.herokuapp.com/manageservice/${id}`
             fetch(url, {
                 method: 'DELETE'
             })
